@@ -262,6 +262,7 @@ export class Game implements ILoadable<SerializedGame, Game> {
       }
 
 
+
 		if (this.soloTR && !this.soloMode) {
 			const cardsToReplace = [CardName.MINING_GUILD, CardName.UNITED_NATIONS_MARS_INITIATIVE];
 			corporationCards = corporationCards.filter((corpCard) =>  !cardsToReplace.includes(corpCard.name));
