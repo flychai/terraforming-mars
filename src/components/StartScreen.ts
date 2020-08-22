@@ -19,12 +19,9 @@ export const StartScreen = Vue.component("start-screen", {
                 <a class="start-screen-link start-screen-link--about" href="https://github.com/bafolts/terraforming-mars" v-i18n>About us</a>
                 <a class="start-screen-link start-screen-link--changelog" href="https://github.com/bafolts/terraforming-mars/wiki/Changelog" v-i18n>Whats new?</a>
                 <a class="start-screen-link start-screen-link--chat" href="https://discord.gg/fWXE53K" target="_blank" v-i18n>Join us on Discord</a>
-<<<<<<< HEAD
-=======
                 <div class="start-screen-header start-screen-link--languages">
                     <language-switcher></language-switcher>
                 </div>
->>>>>>> 7ec3d36656857debb455fc4de37a50acafbb8b4f
             </div>
 
 
