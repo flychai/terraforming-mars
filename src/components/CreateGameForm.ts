@@ -32,6 +32,7 @@ interface CreateGameModel {
     solarPhaseOption: boolean;
     shuffleMapOption: boolean;
     promoCardsOption: boolean;
+    HandicapOption: boolean;
     undoOption: boolean;
     fastModeOption: boolean;
     includeVenusMA: boolean;
@@ -91,6 +92,7 @@ export const CreateGameForm = Vue.component("create-game-form", {
             solarPhaseOption: false,
             shuffleMapOption: false,
             promoCardsOption: false,
+            HandicapOption: false,
             undoOption: false,
             fastModeOption: false,
             includeVenusMA: true,
@@ -114,9 +116,15 @@ export const CreateGameForm = Vue.component("create-game-form", {
         }
 
         fetch("/api/clonablegames")
+
         .then(response => response.json())
         .then(onSucces)
         .catch(_ => alert("Unexpected server response"));
+    },
+    watch: {
+        playersCount: function (val) {
+            this.initialDraftRounds = val
+        }
     },
     methods: {
         getPlayerNamePlaceholder: function (player: NewPlayerModel): string {
@@ -274,7 +282,7 @@ export const CreateGameForm = Vue.component("create-game-form", {
                 }
             }
 
-            fetch("/game", {method: "PUT", "body": dataToSend, headers: {"Content-Type": "application/json"}})
+            fetch("/game", { method: "PUT", "body": dataToSend, headers: { "Content-Type": "application/json" } })
                 .then(response => response.json())
                 .then(onSucces)
                 .catch(_ => alert("Unexpected server response"));
@@ -350,7 +358,12 @@ export const CreateGameForm = Vue.component("create-game-form", {
                                 <input type="checkbox" v-model="promoCardsOption">
                                 <i class="form-icon"></i> <span v-i18n>Promos</span>&nbsp;<a href="https://github.com/bafolts/terraforming-mars/wiki/Variants#promo-cards" class="tooltip" target="_blank">&#9432;</a>
                             </label>
-
+                            
+                            <label class="form-switch" v-if="playersCount > 1">
+                                <input type="checkbox" v-model="soloTR">
+                                <i class="form-icon"></i> <span v-i18n>Buff</span>
+                            </label>
+							
                         </div>
 
                         <div class="create-game-options-block col3 col-sm-6">
@@ -502,6 +515,7 @@ export const CreateGameForm = Vue.component("create-game-form", {
                 v-bind:colonies="colonies"
                 v-bind:turmoil="turmoil"
                 v-bind:promoCardsOption="promoCardsOption"
+				v-bind:HandicapOption="HandicapOption"
             ></corporations-filter>
 
             <colonies-filter
