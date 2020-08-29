@@ -1,8 +1,7 @@
 #player-home {
     padding-left: 20px;
     border-left: 1px solid #adacac;
-    background: url(assets/background-noise.png);
-    background-size: cover;
+    background: url(assets/stars.jpg);
 }
 
 .player_color_red {
@@ -69,13 +68,13 @@
     }
 }
 
+
 .tags-grid {
     display: grid;
-    grid-template-columns: max-content repeat(15, 60px);
+    grid-template-columns: max-content repeat(16, 50px);
 
-    grid-row-gap: 20px;
-
-    margin-top: 15px;
+    grid-row-gap: 10px;
+    margin-top: 10px;
 
     .hide_tag {
         visibility: hidden;
@@ -120,7 +119,12 @@
     }
 
     .card-count {
-        background: url(assets/preferences_cards.png) center;
+        background: url(assets/preferences_cards.png) center no-repeat;
+    }
+
+    .rt-count {
+        background: url(assets/icon_rt.png) center no-repeat;
+        background-size: 22px;
     }
 
     .vp-count{
@@ -158,8 +162,8 @@
     border-right: 2px solid rgb(137,137,137);
     background-color: white;
     margin-top: -6px;
+    margin-left: 3px;
     box-sizing: content-box;
-    margin-left: 10px;
     z-index: 2;
 }
 
@@ -179,7 +183,7 @@
 .tag-count-display {
     color: #000;
     position: absolute;
-    left: 14px;
+    left: 7px;
     top: 25px;
     height: 35px;
     line-height: 44px;
@@ -259,9 +263,16 @@
         border-radius: 4px;
         font-weight: bold;
     }
-    .tags_cont .player_name_cont {
-        text-align: left;
+
+    .tags_cont {
+        display: inline-block;
+        vertical-align: top;
+
+        .player_name_cont {
+            text-align: left;
+        }
     }
+
     .player_name_cont {
         text-align: center;
         width: 150px;
@@ -326,7 +337,7 @@
 }
 .awards-padding {padding: 3px 42px 3px 42px !important;}
 
-.milestones, .awards {
+.milestones, .awards, .tag-overview {
     .ma-clickable {
         font-family: Ubuntu, Sans;
         letter-spacing: 1px;
@@ -339,6 +350,9 @@
         border-radius: 20px 20px 0 0;
         text-decoration: none;
         cursor: pointer;
+        min-width: 180px;
+        display: inline-block;
+        text-align: center;
     }
 
     .ma-block {
